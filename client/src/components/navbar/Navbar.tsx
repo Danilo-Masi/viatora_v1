@@ -1,5 +1,4 @@
 import { Button } from "../ui/button";
-import { Map } from 'lucide-react';
 
 export default function () {
     return (
@@ -9,9 +8,9 @@ export default function () {
                 Viat<span className="text-amber-300">ora</span>
             </h1>
             <Button
-                className="h-full px-5">
-                View itinerary
-                <Map />
+                size="lg"
+                className="mt-2 p-5 text-base font-bold bg-amber-300 text-zinc-900 flex items-center gap-2 hover:scale-105 hover:shadow-xl transition-all duration-200">
+                🚢 View itinerary ✈️
             </Button>
         </div>
     )

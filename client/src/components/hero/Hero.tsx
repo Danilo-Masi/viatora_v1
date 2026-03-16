@@ -94,7 +94,7 @@ export default function Hero() {
                 </p>
                 <Button
                     size="lg"
-                    className="mt-2 p-6 text-lg font-bold bg-amber-300 text-amber-950">
+                    className="mt-2 px-8 py-5 text-base font-bold bg-amber-300 text-zinc-900 flex items-center gap-2 hover:scale-105 hover:shadow-xl transition-all duration-200">
                     📍 Explore itineraries 🌍
                 </Button>
             </section>

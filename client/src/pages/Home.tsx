@@ -9,7 +9,7 @@ import Navbar from "../components/navbar/Navbar";
 export default function Home() {
     return (
         <div className="w-full h-auto min-h-svh flex items-start justify-center bg-zinc-50">
-            <div className="w-full md:w-3/4 h-full min-h-svh p-3 flex flex-col gap-20">
+            <div className="w-full md:w-3/4 h-full min-h-svh p-3 flex flex-col gap-30">
                 <Navbar />
                 <Hero />
                 <Features />
