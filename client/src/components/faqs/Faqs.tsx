@@ -14,8 +14,8 @@ const questions = [
     },
     {
         id: 3,
-        title: "Posso usare gli itinerari anche offline?",
-        description: "Sì! Una volta aperto il link su Google Maps, puoi salvare l’itinerario offline direttamente dall’app di Google Maps sul tuo smartphone, così sarà disponibile anche senza connessione internet."
+        title: "Chi crea gli itinerari?",
+        description: "Per il momento una ristretta cerchia di persone selezionate dal team di Viatora, se vuoi far parte di questi scrivici un email a ... e ti diremo come procedere. Stiamo già lavorando alla versione successiva in cui chiunque può vendere il proprio itinerario"
     },
     {
         id: 4,
