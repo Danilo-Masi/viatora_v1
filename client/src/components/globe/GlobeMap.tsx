@@ -1,14 +1,15 @@
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
-import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
+import { MapContainer, TileLayer, GeoJSON, Pane } from 'react-leaflet'
+import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react';
 
 interface GlobeMapProps {
+    countriesState: { [key: string]: string };
     setDialogOpen: Dispatch<SetStateAction<boolean>>;
     setSelectedCountry: Dispatch<SetStateAction<{ name: string; code: string }>>;
 }
 
-export default function GlobeMap({ setDialogOpen, setSelectedCountry }: GlobeMapProps) {
-
-    const [countriesState, setCountriesState] = useState<{ [key: string]: string }>({});
+export default function GlobeMap({ countriesState, setDialogOpen, setSelectedCountry }: GlobeMapProps) {
+    const isMobile = window.innerWidth < 768;
+    const geoJsonRef = useRef<any>(null);
     const [geoData, setGeoData] = useState<any>(null);
 
     // Function to load GeoJSON data for countries
@@ -34,20 +35,19 @@ export default function GlobeMap({ setDialogOpen, setSelectedCountry }: GlobeMap
     }
 
     function style(feature: any) {
-        const code = feature.properties.ISO_A2;
+        const iso = "ISO3166-1-Alpha-2";
+        const code = feature.properties[iso];
 
         return {
             fillColor: getColor(countriesState[code]),
             weight: 1.5,
             color: "#ffffff",
-            fillOpacity: 0,
-            zIndex: 1,
+            fillOpacity: 0.4,
         };
     }
 
     function onEachFeature(feature: any, layer: any) {
-        const iso = `ISO3166-1-Alpha-2`;
-
+        const iso = "ISO3166-1-Alpha-2";
         const name = feature.properties.name;
         const code = feature.properties[iso];
 
@@ -55,32 +55,33 @@ export default function GlobeMap({ setDialogOpen, setSelectedCountry }: GlobeMap
             click: () => {
                 setSelectedCountry({ name, code });
                 setDialogOpen(true);
+            },
 
-            },
             mouseover: (e: any) => {
-                e.target.setStyle({
-                    weight: 0,
-                    fillOpacity: 0,
+                const layer = e.target;
+
+                layer.setStyle({
+                    fillOpacity: 0.7,
+                    weight: 2,
+                    color: "#000",
                 });
+
+                layer.bringToFront();
             },
+
             mouseout: (e: any) => {
-                e.target.setStyle({
-                    weight: 0,
-                    fillOpacity: 0,
-                });
+                geoJsonRef.current.resetStyle(e.target); // 🔥 FIX VERO
             },
         });
     }
-
-    const isMobile = window.innerWidth < 768;
 
     return (
         <div className='w-full h-full z-0'>
             <MapContainer
                 center={[20, 0]}
                 zoomControl={isMobile ? false : true}
-                zoom={4}
-                minZoom={4}
+                zoom={3}
+                minZoom={3}
                 maxZoom={8}
                 maxBounds={[
                     [-90, -180],
@@ -89,30 +90,35 @@ export default function GlobeMap({ setDialogOpen, setSelectedCountry }: GlobeMap
                 maxBoundsViscosity={1.0}
                 scrollWheelZoom={false}
                 className="w-full h-full z-0">
+
+                {/* Panes */}
+                <Pane name="base" style={{ zIndex: 200 }} />
+                <Pane name="countries" style={{ zIndex: 400 }} />
+                <Pane name="labels" style={{ zIndex: 600, pointerEvents: "none" }} />
+
+                {/* Base map */}
+                <TileLayer
+                    pane='base'
+                    url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                />
+
+                {/* Countries */}
                 {geoData && (
                     <GeoJSON
+                        pane='countries'
+                        ref={geoJsonRef}
                         key={JSON.stringify(countriesState)}
                         data={geoData}
                         style={style}
                         onEachFeature={onEachFeature}
                     />
                 )}
+
+                {/* Labels */}
                 <TileLayer
-                    zIndex={0}
-                    url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-                />
-                <TileLayer
-                    zIndex={2}
-                    url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png"
-                />
-                {/* 
-                <TileLayer
-                    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-                />
-                <TileLayer
-                    url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
-                />
-                */}
+                    pane='labels'
+                    url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png" />
+
             </MapContainer>
         </div>
     )
