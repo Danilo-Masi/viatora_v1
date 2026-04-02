@@ -1,4 +1,4 @@
-import { Check, Compass, Flag, Heart, X } from "lucide-react"
+import { Compass, Flag, Heart, X } from "lucide-react"
 import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog"
 import type { Dispatch, SetStateAction } from "react";
 import ReactCountryFlag from "react-country-flag"

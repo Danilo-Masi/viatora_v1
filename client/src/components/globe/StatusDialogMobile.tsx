@@ -92,6 +92,6 @@ export default function StatusDialogMobile({ dialogOpen, setDialogOpen, selected
                 </Button>
 
             </DrawerContent >
-        </Drawer >
+        </Drawer>
     )
 }
