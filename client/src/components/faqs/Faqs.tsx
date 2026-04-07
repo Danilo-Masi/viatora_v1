@@ -2,7 +2,7 @@ import { AccordionFaq } from "./AccordionFaq";
 
 export default function Faqs() {
     return (
-        <div className=" w-full md:w-5/6 h-auto min-h-[50svh] flex flex-col items-center justify-start gap-15">
+        <div className="w-[95%] md:w-5/6 h-auto min-h-[50svh] flex flex-col items-center justify-start gap-15 bg-red-500">
 
             {/* Head */}
             <div className="flex flex-col items-center text-center gap-3">

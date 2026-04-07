@@ -4,7 +4,7 @@ import fullmap from "../../assets/fullmap-screen.png"
 
 export default function Cta() {
     return (
-        <section className=" w-full md:w-5/6 py-24 flex flex-col items-center justify-center relative overflow-hidden rounded-2xl border border-zinc-800">
+        <section className="w-[95%] md:w-5/6 py-24 flex flex-col items-center justify-center relative overflow-hidden rounded-2xl border border-zinc-800">
 
             {/* Background */}
             <img
@@ -27,7 +27,7 @@ export default function Cta() {
                 {/* CTA */}
                 <Button
                     size="lg"
-                    className="group mt-4 px-8 py-5 text-base font-semibold bg-amber-400 text-black flex items-center gap-2 rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200">
+                    className="group mt-4 p-6 text-base font-semibold bg-blue-500 text-white flex items-center gap-2 rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200">
                     Browse itineraries
                     <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
                 </Button>

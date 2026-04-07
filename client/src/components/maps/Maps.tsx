@@ -47,7 +47,7 @@ const itinerari = [
 
 export default function Maps() {
     return (
-        <section className="w-full md:w-5/6 flex flex-col items-center gap-32 md:gap-20">
+        <section className="w-[95%] md:w-5/6 flex flex-col items-center gap-32 md:gap-20 bg-red-500">
             {/* Search Bar */}
             <SearchBar />
             {/* Cards */}

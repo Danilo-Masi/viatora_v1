@@ -28,7 +28,7 @@ function FeatureContainer({ title, description, icon }: FeatureContainerInterfac
 
 export default function Features() {
     return (
-        <section className=" w-full md:w-5/6 flex flex-col items-center gap-12">
+        <section className="w-[95%] md:w-5/6 flex flex-col items-center gap-12">
 
             {/* Head */}
             <div className="flex flex-col items-center text-center gap-3">
@@ -41,6 +41,7 @@ export default function Features() {
             </div>
 
             {/* Features */}
+            {/* 
             <div className="w-full flex flex-wrap gap-6 justify-center">
                 <FeatureContainer
                     title="Ready in seconds"
@@ -57,6 +58,23 @@ export default function Features() {
                     description="Restaurants, attractions and hidden gems all in one place, ready to follow on your phone."
                     icon={<Compass className="w-5 h-5 text-zinc-700" />}
                 />
+            </div>
+            */}
+
+            <div className="w-full h-svh flex flex-col md:flex-row gap-5">
+
+                <div className="w-full md:w-2/3 h-full flex flex-col items-start justify-start gap-5">
+                    <div className="w-full h-1/2 flex items-center justify-center border border-zinc-300 rounded-xl bg-zinc-200/70">
+                        1
+                    </div>
+                    <div className="w-full h-1/2 flex items-center justify-center border border-zinc-300 rounded-xl bg-zinc-200/70">
+                        2
+                    </div>
+                </div>
+                
+                <div className="w-full md:w-1/3 h-full flex items-center justify-center border border-zinc-300 rounded-xl bg-zinc-200/70">
+                    3
+                </div>
             </div>
 
         </section>
