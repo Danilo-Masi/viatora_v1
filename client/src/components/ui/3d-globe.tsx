@@ -118,13 +118,7 @@ interface MarkerProps {
   onHover?: (marker: GlobeMarker | null) => void;
 }
 
-function Marker({
-  marker,
-  radius,
-  defaultSize,
-  onClick,
-  onHover,
-}: MarkerProps) {
+function Marker({ marker, radius}: MarkerProps) {
   const [hovered, setHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const groupRef = useRef<THREE.Group>(null);
@@ -163,20 +157,6 @@ function Marker({
     // Show marker only if it's facing the camera (stricter threshold)
     setIsVisible(dot > 0.1);
   });
-
-  const handlePointerEnter = useCallback(() => {
-    setHovered(true);
-    onHover?.(marker);
-  }, [marker, onHover]);
-
-  const handlePointerLeave = useCallback(() => {
-    setHovered(false);
-    onHover?.(null);
-  }, [onHover]);
-
-  const handleClick = useCallback(() => {
-    onClick?.(marker);
-  }, [marker, onClick]);
 
   // Calculate line center and orientation
   const { lineCenter, lineQuaternion } = useMemo(() => {
@@ -223,17 +203,13 @@ function Marker({
         >
           <div
             className={cn(
-              "cursor-pointer overflow-hidden rounded-full bg-neutral-900 shadow-lg transition-transform duration-200",
+              "cursor-pointer overflow-hidden rounded-full bg-neutral-900 shadow-lg transition-transform duration-200 ring ring-white",
               hovered && "scale-125 shadow-xl ring-1 ring-white/50",
             )}
             style={{
               width: "8px",
               height: "8px",
-            }}
-            onMouseEnter={handlePointerEnter}
-            onMouseLeave={handlePointerLeave}
-            onClick={handleClick}
-          >
+            }} >
             <img
               src={marker.src}
               alt={marker.label || "Marker"}

@@ -1,9 +1,10 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet"
+import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet"
 import L from "leaflet"
-import { mapData } from "@/data/mapData"
 import { useEffect } from "react"
+// Data
+import { mapData } from "@/data/mapData"
 
-const createIcon = (type: string, label?: string) => {
+const createIcon = (type: string, label?: string,) => {
     let bg = "#ef4444"
 
     if (type === "food") bg = "#f97316"
@@ -26,7 +27,7 @@ const createIcon = (type: string, label?: string) => {
         font-weight:600;
         box-shadow:0 4px 10px rgba(0,0,0,0.2);
       ">
-        ${label || ""}
+        ${label || "B"}
       </div>
     `,
         className: "",
@@ -47,15 +48,13 @@ export default function LeafletMap({ daySelected }: { daySelected: number }) {
 
     return (
         <MapContainer
-            center={[40.7580, -73.9855]}
+            center={[40.7128, -74.0060]}
             zoom={15}
             scrollWheelZoom={true}
             zoomControl={false}
             className="w-full h-full rounded-t-[3rem] absolute top-0 left-0 z-0">
 
-            <TileLayer
-                url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
-            />
+            <TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" />
 
             <FitBounds markers={markers} />
 
@@ -63,14 +62,9 @@ export default function LeafletMap({ daySelected }: { daySelected: number }) {
                 <Marker
                     key={i}
                     position={m.coords as [number, number]}
-                    icon={createIcon(m.type, m.label)}>
-                    <Popup>
-                        {m.type === "stop"
-                            ? `Stop ${m.label}`
-                            : m.type}
-                    </Popup>
-                </Marker>
+                    icon={createIcon(m.type, m.label)} />
             ))}
+
         </MapContainer>
     )
 }

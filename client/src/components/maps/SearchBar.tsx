@@ -1,51 +1,10 @@
+import { type Dispatch, type ReactNode, type SetStateAction } from "react"
+import { useAppContext } from "@/context/AppContext";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "../ui/button"
-import { Search, MapPin, CalendarDays, Sun, Loader, RefreshCw } from "lucide-react"
-import { useState, type Dispatch, type ReactNode, type SetStateAction } from "react"
-
-const categories = [
-    { value: "trending", label: "Trending", emoji: "🔥" },
-    { value: "new", label: "New", emoji: "✨" },
-    { value: "best_value", label: "Best value", emoji: "💎" },
-    { value: "hidden_gems", label: "Hidden gems", emoji: "🧭" },
-];
-
-const destinations = {
-    popular: [
-        { value: "italy", label: "Italy", flag: "🇮🇹" },
-        { value: "spain", label: "Spain", flag: "🇪🇸" },
-        { value: "france", label: "France", flag: "🇫🇷" },
-    ],
-    europe: [
-        { value: "netherlands", label: "Netherlands", flag: "🇳🇱" },
-        { value: "croatia", label: "Croatia", flag: "🇭🇷" },
-        { value: "hungary", label: "Hungary", flag: "🇭🇺" },
-        { value: "austria", label: "Austria", flag: "🇦🇹" },
-        { value: "portugal", label: "Portugal", flag: "🇵🇹" },
-        { value: "uk", label: "United Kingdom", flag: "🇬🇧" },
-    ],
-    america: [
-        { value: "usa", label: "USA", flag: "🇺🇸" },
-    ]
-}
-
-const durations = [
-    { value: "1", label: "1 day" },
-    { value: "2", label: "2 days" },
-    { value: "3", label: "3 days" },
-    { value: "5", label: "5 days" },
-    { value: "7", label: "1 week" },
-    { value: "10", label: "10 days" },
-    { value: "14", label: "2+ weeks" },
-];
-
-const periods = [
-    { value: "spring", label: "Spring", emoji: "🌸" },
-    { value: "summer", label: "Summer", emoji: "☀️" },
-    { value: "autumn", label: "Autumn", emoji: "🍂" },
-    { value: "winter", label: "Winter", emoji: "❄️" },
-    { value: "all", label: "All seasons", emoji: "🌍" },
-];
+import { Search, MapPin, CalendarDays, Sun, Loader } from "lucide-react"
+// Data
+import { categories, destinations, durations, periods } from "@/data/searchfilters";
 
 function DestinationSelect({ value, onChange }: any) {
     return (
@@ -174,20 +133,15 @@ function SelectSection({ children }: { children: ReactNode }) {
 }
 
 interface SearchBarProps {
-    setFilters: Dispatch<SetStateAction<{ destination: string, duration: string, period: string, badge: string }>>;
     isExploreLoading: boolean;
     setExploreLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function SearchBar({ setFilters, isExploreLoading, setExploreLoading }: SearchBarProps) {
-    const [destination, setDestination] = useState("trending")
-    const [duration, setDuration] = useState("")
-    const [period, setPeriod] = useState("")
-    const [badge, setBadge] = useState("trending")
+export default function SearchBar({ isExploreLoading, setExploreLoading }: SearchBarProps) {
+    const { destination, setDestination, duration, setDuration, period, setPeriod, badge, setBadge, setFilters } = useAppContext();
 
     const handleDestinationChange = (value: string) => {
         const isCategory = ["trending", "new", "best_value", "hidden_gems"].includes(value)
-
         if (isCategory) {
             setBadge(value)
             setDestination("")
@@ -207,21 +161,6 @@ export default function SearchBar({ setFilters, isExploreLoading, setExploreLoad
             badge,
         })
         setExploreLoading(false);
-    }
-
-    // Fuction to reset filters
-    const handleReset = () => {
-        setDestination("")
-        setDuration("")
-        setPeriod("")
-        setBadge("trending")
-
-        setFilters({
-            destination: "",
-            duration: "",
-            period: "",
-            badge: "trending",
-        })
     }
 
     return (
@@ -260,14 +199,6 @@ export default function SearchBar({ setFilters, isExploreLoading, setExploreLoad
                         <Search className="w-4 h-4" />
                     </>
                 )}
-            </Button>
-
-            <Button
-                variant="outline"
-                size="icon-lg"
-                onClick={handleReset}
-                disabled={isExploreLoading}>
-                <RefreshCw size={18} />
             </Button>
         </div>
     )

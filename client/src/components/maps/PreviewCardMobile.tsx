@@ -1,17 +1,19 @@
 import { useAppContext } from "@/context/AppContext";
 import { Drawer, DrawerContent } from "../ui/drawer";
+import { itineraries } from "@/data/itineraries";
+import PreviewMap from "./PreviewMap";
+import PreviewInfo from "./PreviewInfo";
 
 export default function PreviewCardMobile() {
-    const { isPreviewOpen, setPreviewOpen } = useAppContext();
+    const { isPreviewOpen, setPreviewOpen, selectedItinerary } = useAppContext();
+
+    const itinerary = itineraries.find(it => it.id === selectedItinerary);
+
     return (
         <Drawer open={isPreviewOpen} onOpenChange={setPreviewOpen}>
-            <DrawerContent>
-                <div className="w-full h-[30svh] bg-red-500">
-                    mappa
-                </div>
-                <div className="w-full h-[30svh] bg-red-500">
-                    elenco + button
-                </div>
+            <DrawerContent className="p-3 flex flex-col gap-4">
+                <PreviewMap itinerary={itinerary} />
+                <PreviewInfo itinerary={itinerary} />
             </DrawerContent >
         </Drawer>
     )

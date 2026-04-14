@@ -101,8 +101,6 @@ function Feature1() {
     )
 }
 
-
-
 function Feature2({ daySelected, setDaySelected }: { daySelected: number; setDaySelected: Dispatch<SetStateAction<number>> }) {
     return (
         <div className="w-full h-auto md:h-1/2 flex flex-col md:flex-row items-center gap-8 border border-zinc-200 rounded-2xl p-6 md:p-10 bg-linear-to-b md:bg-linear-to-r from-blue-500/10 via-blue-200/10 to-transparent">
@@ -161,7 +159,8 @@ function Feature3({ daySelected }: { daySelected: number }) {
                 />
             </div>
             {/* IMAGE */}
-            <PhoneMockup daySelected={daySelected} />
+            <PhoneMockup
+                daySelected={daySelected} />
         </div>
     )
 }

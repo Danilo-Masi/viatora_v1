@@ -12,7 +12,9 @@ export default function PhoneMockup({ daySelected }: { daySelected: number }) {
             <div className="w-full h-full rounded-t-[3rem] flex flex-col items-center justify-start gap-5 overflow-hidden relative isolate bg-zinc-100">
 
                 {/* MAP */}
-                <LeafletMap daySelected={daySelected} />
+                <LeafletMap
+                    daySelected={daySelected}
+                />
 
                 {/* HEADER */}
                 <div className="w-full h-[8svh] flex items-center justify-between px-5 rounded-t-[3rem] relative isolate">

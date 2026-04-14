@@ -3,10 +3,10 @@ import { Button } from "../ui/button";
 import { useAppContext } from "@/context/AppContext";
 
 interface ItineraryCardInterface {
+    id: string;
     image: string;
     title: string;
     price: number;
-    currency: "EUR" | "USD";
     country: string;
     city: string;
     duration: number;
@@ -14,10 +14,6 @@ interface ItineraryCardInterface {
     spots: number;
     badges?: ("trending" | "new" | "best_value" | "hidden_gems")[];
     vibe?: ("food" | "nature" | "nightlife" | "culture" | "relax")[];
-}
-
-function formatPrice(price: number, currency: string) {
-    return currency === "EUR" ? `€${price}` : `$${price}`;
 }
 
 function getBadge(badges?: string[]) {
@@ -58,8 +54,13 @@ function getBadge(badges?: string[]) {
     return null;
 }
 
-export default function ItineraryCard({ image, title, price, currency, country, city, duration, shortDescription, spots, badges, vibe }: ItineraryCardInterface) {
-    const { setPreviewOpen } = useAppContext();
+export default function ItineraryCard({ id, image, title, price, country, city, duration, shortDescription, spots, badges, vibe }: ItineraryCardInterface) {
+    const { setPreviewOpen, setSelectedItinerary } = useAppContext();
+
+    const handlePreview = () => {
+        setSelectedItinerary(id);
+        setPreviewOpen(true);
+    }
 
     return (
         <div className="w-full md:w-[calc(33%-18px)] h-[80svh] rounded-2xl relative overflow-hidden bg-zinc-900 border border-zinc-200 group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
@@ -125,11 +126,11 @@ export default function ItineraryCard({ image, title, price, currency, country, 
                 <div className="flex items-center gap-3 mt-2">
 
                     <div className="text-white font-bold text-lg">
-                        {formatPrice(price, currency)}
+                        €{price}
                     </div>
 
                     <Button
-                        onClick={() => setPreviewOpen(true)}
+                        onClick={handlePreview}
                         className="flex-1 py-5 bg-blue-500 text-white font-semibold text-sm rounded-xl hover:scale-[1.02] hover:shadow-xl transition-all duration-200">
                         View itinerary <ChevronRight size={16} />
                     </Button>

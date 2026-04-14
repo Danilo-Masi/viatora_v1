@@ -1,466 +1,257 @@
 import rome from "../assets/itineraries/rome_card.jpg";
+import rome2 from "../assets/itineraries/rome_card_2.jpg";
 import florence from "../assets/itineraries/florence_card.jpg";
+import florence2 from "../assets/itineraries/florence_card_2.jpg";
 import milan from "../assets/itineraries/milano_card.jpg";
+import milan2 from "../assets/itineraries/milan_card_2.jpg";
 import naples from "../assets/itineraries/naples_card.jpg";
+import naples2 from "../assets/itineraries/naples_card_2.jpg";
 import amsterdam from "../assets/itineraries/amsterdam_card.jpg";
+import amsterdam2 from "../assets/itineraries/amsterdam_card_2.jpg";
 import split from "../assets/itineraries/split_card.jpg";
+import split2 from "../assets/itineraries/split_card_2.jpg";
 import dubrovnik from "../assets/itineraries/dubrovnik_card.jpg";
+import dubrovnik2 from "../assets/itineraries/dubrovnik_card_2.jpg";
 import budapest from "../assets/itineraries/budapest_card.jpg";
+import budapest2 from "../assets/itineraries/budapest_card_2.jpg";
 import vienna from "../assets/itineraries/vienna_card.jpg";
+import vienna2 from "../assets/itineraries/vienna_card_2.jpg";
 import seville from "../assets/itineraries/siviglia_card.jpg";
+import seville2 from "../assets/itineraries/seville_card_2.jpg";
 import bilbao from "../assets/itineraries/bilbao_card.jpg";
+import bilbao2 from "../assets/itineraries/bilbao_card_2.jpg";
 import london from "../assets/itineraries/london_card.jpg";
+import london2 from "../assets/itineraries/london_card_2.jpg";
 import paris from "../assets/itineraries/paris_card.jpg";
+import paris2 from "../assets/itineraries/paris_card_2.jpg";
 import lisbon from "../assets/itineraries/lisbon_card.jpg";
+import lisbon2 from "../assets/itineraries/lisbon_card_2.jpg";
 import newyork from "../assets/itineraries/newyork_card.jpg";
+import newyork2 from "../assets/itineraries/newyork_card_2.jpg";
 
-type Itinerary = {
-    id: string
-
-    title: string
-    city: string
-    country: string
-    continent: "Europe" | "Americas"
-
-    cover: string
-    price: number
-    currency: "EUR" | "USD"
-
-    duration: number
-    period: ("spring" | "summer" | "autumn" | "winter")[]
-
-    shortDescription: string
-    description: string
-
-    highlights: string[]
-    includes: string[]
-
-    tags: string[]
-
-    badges?: ("trending" | "new" | "best_value" | "hidden_gems")[]
-    spots: number
-    level?: "easy" | "medium" | "intense"
-    vibe?: ("food" | "nature" | "nightlife" | "culture" | "relax")[]
-}
-
-export const itineraries: Itinerary[] = [
+export const itineraries = [
     {
         id: "rome-3-days",
         title: "Rome in 3 days — history, food & hidden corners",
-        city: "Rome",
-        country: "Italy",
-        continent: "Europe",
-        cover: rome,
-        price: 14.99,
-        currency: "EUR",
-        duration: 3,
-        period: ["spring", "summer", "autumn"],
-        shortDescription: "The perfect mix of iconic Rome and local life.",
-        description:
-            "Walk through centuries of history without wasting hours planning. This itinerary takes you from the Colosseum to secret viewpoints, authentic trattorias, and hidden streets most tourists never see. Every stop is optimized so you enjoy Rome, not Google Maps.",
-        highlights: [
-            "Colosseum & Roman Forum optimized route",
-            "Hidden Trastevere streets",
-            "Authentic Roman food spots",
-            "Secret sunset viewpoints"
-        ],
-        includes: [
-            "Google Maps ready itinerary",
-            "3-day optimized route",
-            "Local food & coffee spots",
-            "Time-saving plan"
-        ],
-        tags: ["rome", "italy", "3 days", "city", "food", "culture", "europe", "spring", "summer"],
-        badges: ["best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        description: "Walk through history, eat like a local and discover secret Rome.",
+        city: "Rome", country: "Italy", continent: "Europe",
+        cover: rome, cover2: rome2, price: 14.99, duration: 3, period: "spring",
+        badge: "best_value", spots: 32, level: "medium", vibes: ["food", "culture"],
+        position: { lat: 41.9028, lng: 12.4964 },
+        previewSpots: [
+            { id: "1", title: "Colosseum", position: { lat: 41.8902, lng: 12.4922 }, type: "activity" },
+            { id: "2", title: "Trevi Fountain", position: { lat: 41.9009, lng: 12.4833 }, type: "photo" },
+            { id: "3", title: "Trastevere dinner", position: { lat: 41.8897, lng: 12.4708 }, type: "food" }
+        ]
     },
 
     {
         id: "florence-2-days",
-        title: "Florence in 2 days — art, views & Tuscan vibes",
-        city: "Florence",
-        country: "Italy",
-        continent: "Europe",
-        cover: florence,
-        price: 12.99,
-        currency: "EUR",
-        duration: 2,
-        period: ["spring", "summer", "autumn"],
-        shortDescription: "A compact Florence experience done right.",
-        description:
-            "Discover Florence without feeling rushed. From Renaissance masterpieces to panoramic viewpoints and local trattorias, this itinerary helps you experience the city in the smartest way possible.",
-        highlights: [
-            "Duomo & historic center route",
-            "Best sunset viewpoints",
-            "Local trattorias",
-            "Hidden artisan streets"
-        ],
-        includes: [
-            "Google Maps route",
-            "2-day plan",
-            "Food & local tips"
-        ],
-        tags: ["florence", "italy", "2 days", "culture", "food", "europe"],
-        badges: ["new"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Florence in 2 days — art & Tuscan vibes",
+        description: "Renaissance art, viewpoints and authentic food in 48h.",
+        city: "Florence", country: "Italy", continent: "Europe",
+        cover: florence, cover2: florence2, price: 12.99, duration: 2, period: "spring",
+        badge: "new", spots: 28, level: "easy", vibes: ["culture", "food"],
+        position: { lat: 43.7696, lng: 11.2558 },
+        previewSpots: [
+            { id: "1", title: "Duomo", position: { lat: 43.7731, lng: 11.2560 }, type: "activity" },
+            { id: "2", title: "Piazzale Michelangelo", position: { lat: 43.7629, lng: 11.2651 }, type: "photo" },
+            { id: "3", title: "Local trattoria", position: { lat: 43.7700, lng: 11.2500 }, type: "food" }
+        ]
     },
 
     {
         id: "milan-2-days",
-        title: "Milan in 2 days — design, food & city energy",
-        city: "Milan",
-        country: "Italy",
-        continent: "Europe",
-        cover: milan,
-        price: 9.99,
-        currency: "EUR",
-        duration: 2,
-        period: ["spring", "summer", "autumn", "winter"],
-        shortDescription: "More than fashion: discover real Milan.",
-        description:
-            "From iconic landmarks to hidden neighborhoods, explore Milan like a local. This itinerary blends culture, modern vibes, and the best aperitivo spots.",
-        highlights: [
-            "Duomo & city center route",
-            "Navigli canals",
-            "Best aperitivo spots",
-            "Hidden local areas"
-        ],
-        includes: [
-            "Google Maps route",
-            "2-day plan",
-            "Food & nightlife tips"
-        ],
-        tags: ["milan", "italy", "2 days", "city", "food", "nightlife"],
-        badges: ["best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Milan in 2 days — design & aperitivo",
+        description: "Duomo, Navigli and the best aperitivo spots.",
+        city: "Milan", country: "Italy", continent: "Europe",
+        cover: milan, cover2: milan2, price: 9.99, duration: 2, period: "autumn",
+        badge: "best_value", spots: 28, level: "easy", vibes: ["food", "nightlife"],
+        position: { lat: 45.4642, lng: 9.19 },
+        previewSpots: [
+            { id: "1", title: "Duomo", position: { lat: 45.4642, lng: 9.1916 }, type: "activity" },
+            { id: "2", title: "Navigli", position: { lat: 45.4525, lng: 9.1772 }, type: "photo" },
+            { id: "3", title: "Aperitivo bar", position: { lat: 45.4510, lng: 9.18 }, type: "bar" }
+        ]
     },
 
     {
         id: "naples-3-days",
-        title: "Naples in 3 days — chaos, pizza & real Italy",
-        city: "Naples",
-        country: "Italy",
-        continent: "Europe",
-        cover: naples,
-        price: 13.99,
-        currency: "EUR",
-        duration: 3,
-        period: ["spring", "summer", "autumn"],
-        shortDescription: "Authentic Italy at its rawest and best.",
-        description:
-            "Naples is chaotic, intense, and unforgettable. This itinerary guides you through the best of it — street food, historic sites, and breathtaking views — without getting lost in the chaos.",
-        highlights: [
-            "Historic center route",
-            "Best pizza spots",
-            "Seaside viewpoints",
-            "Local street life"
-        ],
-        includes: [
-            "Google Maps itinerary",
-            "3-day plan",
-            "Food & local tips"
-        ],
-        tags: ["naples", "italy", "3 days", "food", "culture"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Naples in 3 days — pizza & chaos",
+        description: "Raw Italy: food, history and seaside views.",
+        city: "Naples", country: "Italy", continent: "Europe",
+        cover: naples, cover2: naples2, price: 13.99, duration: 3, period: "summer",
+        badge: "trending", spots: 30, level: "medium", vibes: ["food", "culture"],
+        position: { lat: 40.8518, lng: 14.2681 },
+        previewSpots: [
+            { id: "1", title: "Historic center", position: { lat: 40.8510, lng: 14.2580 }, type: "activity" },
+            { id: "2", title: "Pizza spot", position: { lat: 40.8515, lng: 14.2550 }, type: "food" },
+            { id: "3", title: "Seafront", position: { lat: 40.8300, lng: 14.2400 }, type: "photo" }
+        ]
     },
+
     {
         id: "amsterdam-3-days",
-        title: "Amsterdam in 3 days — canals, bikes & hidden gems",
-        city: "Amsterdam",
-        country: "Netherlands",
-        continent: "Europe",
-        cover: amsterdam,
-        price: 9.99,
-        currency: "EUR",
-        duration: 3,
-        period: ["spring", "summer"],
-        shortDescription: "Explore Amsterdam beyond the clichés.",
-        description:
-            "Ride through canals, discover cozy cafés, and explore hidden neighborhoods. This itinerary is designed to show you the real Amsterdam, not just the tourist version.",
-        highlights: [
-            "Canal routes",
-            "Local cafés",
-            "Museum optimization",
-            "Hidden areas"
-        ],
-        includes: [
-            "Google Maps route",
-            "3-day plan",
-            "Local spots"
-        ],
-        tags: ["amsterdam", "netherlands", "3 days", "city", "europe"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Amsterdam in 3 days — canals & bikes",
+        description: "Explore beyond clichés with cafés and hidden areas.",
+        city: "Amsterdam", country: "Netherlands", continent: "Europe",
+        cover: amsterdam, cover2: amsterdam2, price: 9.99, duration: 3, period: "summer",
+        badge: "trending", spots: 30, level: "easy", vibes: ["culture", "relax"],
+        position: { lat: 52.3676, lng: 4.9041 },
+        previewSpots: [
+            { id: "1", title: "Canals", position: { lat: 52.3731, lng: 4.8922 }, type: "activity" },
+            { id: "2", title: "Jordaan", position: { lat: 52.3752, lng: 4.8830 }, type: "photo" },
+            { id: "3", title: "Coffee shop", position: { lat: 52.3700, lng: 4.8900 }, type: "food" }
+        ]
     },
+
     {
         id: "split-3-days",
-        title: "Split in 3 days — sea, history & island vibes",
-        city: "Split",
-        country: "Croatia",
-        continent: "Europe",
-        cover: split,
-        price: 11.99,
-        currency: "EUR",
-        duration: 3,
-        period: ["summer"],
-        shortDescription: "A perfect mix of beach and history.",
-        description:
-            "Explore ancient ruins, relax by the sea, and discover the best local spots. Split is the perfect summer destination — this plan helps you enjoy it fully.",
-        highlights: [
-            "Diocletian’s Palace route",
-            "Beach spots",
-            "Local bars",
-            "Island vibes"
-        ],
-        includes: [
-            "Google Maps itinerary",
-            "3-day plan"
-        ],
-        tags: ["split", "croatia", "summer", "3 days"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Split in 3 days — sea & history",
+        description: "Beach, ruins and summer vibes.",
+        city: "Split", country: "Croatia", continent: "Europe",
+        cover: split, cover2: split2, price: 11.99, duration: 3, period: "summer",
+        badge: "trending", spots: 26, level: "easy", vibes: ["relax", "food"],
+        position: { lat: 43.5081, lng: 16.4402 },
+        previewSpots: [
+            { id: "1", title: "Diocletian Palace", position: { lat: 43.5085, lng: 16.4390 }, type: "activity" },
+            { id: "2", title: "Beach", position: { lat: 43.5050, lng: 16.4550 }, type: "photo" },
+            { id: "3", title: "Seaside bar", position: { lat: 43.5060, lng: 16.4450 }, type: "bar" }
+        ]
     },
 
     {
         id: "dubrovnik-2-days",
-        title: "Dubrovnik in 2 days — walls, sea & sunsets",
-        city: "Dubrovnik",
-        country: "Croatia",
-        continent: "Europe",
-        cover: dubrovnik,
-        price: 10.99,
-        currency: "EUR",
-        duration: 2,
-        period: ["summer"],
-        shortDescription: "A cinematic city by the sea.",
-        description:
-            "Walk along ancient walls, swim in crystal-clear waters, and catch unforgettable sunsets. This itinerary helps you avoid crowds and enjoy the magic.",
-        highlights: [
-            "City walls route",
-            "Best viewpoints",
-            "Beach spots"
-        ],
-        includes: [
-            "Google Maps route",
-            "2-day plan"
-        ],
-        tags: ["dubrovnik", "croatia", "2 days", "summer"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Dubrovnik in 2 days — walls & sea",
+        description: "Iconic views and sunsets.",
+        city: "Dubrovnik", country: "Croatia", continent: "Europe",
+        cover: dubrovnik, cover2: dubrovnik2, price: 10.99, duration: 2, period: "summer",
+        badge: "trending", spots: 24, level: "easy", vibes: ["relax", "culture"],
+        position: { lat: 42.6507, lng: 18.0944 },
+        previewSpots: [
+            { id: "1", title: "City walls", position: { lat: 42.6410, lng: 18.1100 }, type: "activity" },
+            { id: "2", title: "Old town", position: { lat: 42.6400, lng: 18.1080 }, type: "photo" },
+            { id: "3", title: "Cliff bar", position: { lat: 42.6390, lng: 18.1050 }, type: "bar" }
+        ]
     },
 
     {
         id: "budapest-3-days",
-        title: "Budapest in 3 days — spas, views & nightlife",
-        city: "Budapest",
-        country: "Hungary",
-        continent: "Europe",
-        cover: budapest,
-        price: 10.99,
-        currency: "EUR",
-        duration: 3,
-        period: ["spring", "summer", "autumn"],
-        shortDescription: "Relax, explore, and party in one trip.",
-        description:
-            "From thermal baths to ruin bars, Budapest is full of surprises. This itinerary blends relaxation, culture, and nightlife perfectly.",
-        highlights: [
-            "Thermal baths",
-            "Danube viewpoints",
-            "Ruin bars",
-            "Historic sites"
-        ],
-        includes: [
-            "Google Maps itinerary",
-            "3-day plan"
-        ],
-        tags: ["budapest", "hungary", "3 days", "nightlife"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Budapest in 3 days — spas & nightlife",
+        description: "Relax, explore and party.",
+        city: "Budapest", country: "Hungary", continent: "Europe",
+        cover: budapest, cover2: budapest2, price: 10.99, duration: 3, period: "spring",
+        badge: "trending", spots: 30, level: "medium", vibes: ["nightlife", "culture"],
+        position: { lat: 47.4979, lng: 19.0402 },
+        previewSpots: [
+            { id: "1", title: "Thermal baths", position: { lat: 47.5186, lng: 19.0810 }, type: "activity" },
+            { id: "2", title: "Parliament", position: { lat: 47.5070, lng: 19.0450 }, type: "photo" },
+            { id: "3", title: "Ruin bar", position: { lat: 47.4970, lng: 19.0630 }, type: "bar" }
+        ]
     },
 
     {
         id: "vienna-2-days",
-        title: "Vienna in 2 days — elegance, coffee & culture",
-        city: "Vienna",
-        country: "Austria",
-        continent: "Europe",
-        cover: vienna,
-        price: 9.99,
-        currency: "EUR",
-        duration: 2,
-        period: ["spring", "winter"],
-        shortDescription: "A refined European escape.",
-        description:
-            "Discover imperial palaces, cozy cafés, and classical culture. Vienna is slow, elegant, and unforgettable.",
-        highlights: [
-            "Palaces route",
-            "Coffee houses",
-            "Historic center"
-        ],
-        includes: [
-            "Google Maps route",
-            "2-day plan"
-        ],
-        tags: ["vienna", "austria", "2 days", "culture"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Vienna in 2 days — elegance & coffee",
+        description: "Imperial culture and cafés.",
+        city: "Vienna", country: "Austria", continent: "Europe",
+        cover: vienna, cover2: vienna2, price: 9.99, duration: 2, period: "winter",
+        badge: "best_value", spots: 24, level: "easy", vibes: ["culture", "relax"],
+        position: { lat: 48.2082, lng: 16.3738 },
+        previewSpots: [
+            { id: "1", title: "Schönbrunn", position: { lat: 48.1845, lng: 16.3122 }, type: "activity" },
+            { id: "2", title: "Cafe Central", position: { lat: 48.2100, lng: 16.3650 }, type: "food" },
+            { id: "3", title: "City center", position: { lat: 48.2080, lng: 16.3730 }, type: "photo" }
+        ]
     },
 
     {
         id: "seville-3-days",
-        title: "Seville in 3 days — sun, tapas & flamenco",
-        city: "Seville",
-        country: "Spain",
-        continent: "Europe",
-        cover: seville,
-        price: 11.99,
-        currency: "EUR",
-        duration: 3,
-        period: ["spring", "autumn"],
-        shortDescription: "Feel the soul of southern Spain.",
-        description:
-            "Warm nights, tapas, and vibrant streets. This itinerary shows you the true energy of Seville.",
-        highlights: ["Tapas spots", "Flamenco vibes", "Historic center"],
-        includes: ["Google Maps route", "3-day plan"],
-        tags: ["seville", "spain", "3 days", "food"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Seville in 3 days — tapas & flamenco",
+        description: "Feel southern Spain energy.",
+        city: "Seville", country: "Spain", continent: "Europe",
+        cover: seville, cover2: seville2, price: 11.99, duration: 3, period: "spring",
+        badge: "trending", spots: 28, level: "easy", vibes: ["food", "culture"],
+        position: { lat: 37.3891, lng: -5.9845 },
+        previewSpots: [
+            { id: "1", title: "Alcázar", position: { lat: 37.3830, lng: -5.9900 }, type: "activity" },
+            { id: "2", title: "Plaza España", position: { lat: 37.3772, lng: -5.9869 }, type: "photo" },
+            { id: "3", title: "Tapas bar", position: { lat: 37.3880, lng: -5.9850 }, type: "food" }
+        ]
     },
 
     {
         id: "bilbao-2-days",
-        title: "Bilbao in 2 days — art, food & modern vibes",
-        city: "Bilbao",
-        country: "Spain",
-        continent: "Europe",
-        cover: bilbao,
-        price: 9.99,
-        currency: "EUR",
-        duration: 2,
-        period: ["spring", "summer"],
-        shortDescription: "A modern city with deep culture.",
-        description:
-            "From the Guggenheim to local food spots, Bilbao mixes art and authenticity.",
-        highlights: ["Guggenheim", "Food scene"],
-        includes: ["Google Maps itinerary"],
-        tags: ["bilbao", "spain", "2 days"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Bilbao in 2 days — art & food",
+        description: "Modern vibes and local culture.",
+        city: "Bilbao", country: "Spain", continent: "Europe",
+        cover: bilbao, cover2: bilbao2, price: 9.99, duration: 2, period: "summer",
+        badge: "hidden_gems", spots: 22, level: "easy", vibes: ["culture", "food"],
+        position: { lat: 43.2630, lng: -2.9350 },
+        previewSpots: [
+            { id: "1", title: "Guggenheim", position: { lat: 43.2687, lng: -2.9340 }, type: "activity" },
+            { id: "2", title: "Old town", position: { lat: 43.2590, lng: -2.9240 }, type: "photo" },
+            { id: "3", title: "Pintxos bar", position: { lat: 43.2600, lng: -2.9300 }, type: "food" }
+        ]
     },
 
     {
         id: "london-4-days",
         title: "London in 4 days — iconic & local",
-        city: "London",
-        country: "United Kingdom",
-        continent: "Europe",
-        cover: london,
-        price: 15.99,
-        currency: "EUR",
-        duration: 4,
-        period: ["spring", "summer", "autumn"],
-        shortDescription: "The best of London without the chaos.",
-        description:
-            "See the iconic spots, but also discover local neighborhoods and hidden gems.",
-        highlights: ["Landmarks", "Hidden areas"],
-        includes: ["Google Maps plan"],
-        tags: ["london", "uk", "4 days"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        description: "Landmarks + hidden areas.",
+        city: "London", country: "United Kingdom", continent: "Europe",
+        cover: london, cover2: london2, price: 15.99, duration: 4, period: "autumn",
+        badge: "trending", spots: 36, level: "medium", vibes: ["culture", "food"],
+        position: { lat: 51.5074, lng: -0.1278 },
+        previewSpots: [
+            { id: "1", title: "Big Ben", position: { lat: 51.5007, lng: -0.1246 }, type: "photo" },
+            { id: "2", title: "Camden", position: { lat: 51.5416, lng: -0.1420 }, type: "activity" },
+            { id: "3", title: "Pub", position: { lat: 51.5100, lng: -0.1300 }, type: "bar" }
+        ]
     },
 
     {
         id: "paris-3-days",
-        title: "Paris in 3 days — romance, food & views",
-        city: "Paris",
-        country: "France",
-        continent: "Europe",
-        cover: paris,
-        price: 14.99,
-        currency: "EUR",
-        duration: 3,
-        period: ["spring", "summer", "autumn"],
-        shortDescription: "The perfect Paris experience.",
-        description:
-            "From the Eiffel Tower to hidden cafés, experience Paris without stress.",
-        highlights: ["Eiffel Tower", "Cafés", "Hidden streets"],
-        includes: ["Google Maps route"],
-        tags: ["paris", "france", "3 days"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Paris in 3 days — romance & food",
+        description: "The perfect Paris experience.",
+        city: "Paris", country: "France", continent: "Europe",
+        cover: paris, cover2: paris2, price: 14.99, duration: 3, period: "spring",
+        badge: "trending", spots: 34, level: "medium", vibes: ["food", "culture"],
+        position: { lat: 48.8566, lng: 2.3522 },
+        previewSpots: [
+            { id: "1", title: "Eiffel Tower", position: { lat: 48.8584, lng: 2.2945 }, type: "photo" },
+            { id: "2", title: "Louvre", position: { lat: 48.8606, lng: 2.3376 }, type: "activity" },
+            { id: "3", title: "Montmartre", position: { lat: 48.8867, lng: 2.3431 }, type: "activity" }
+        ]
     },
 
     {
         id: "lisbon-3-days",
-        title: "Lisbon in 3 days — views, food & ocean vibes",
-        city: "Lisbon",
-        country: "Portugal",
-        continent: "Europe",
-        cover: lisbon,
-        price: 11.99,
-        currency: "EUR",
-        duration: 3,
-        period: ["spring", "summer", "autumn"],
-        shortDescription: "Colorful streets and ocean energy.",
-        description:
-            "Explore Lisbon’s hills, viewpoints, and food scene without wasting time planning.",
-        highlights: ["Viewpoints", "Trams", "Food spots"],
-        includes: ["Google Maps itinerary"],
-        tags: ["lisbon", "portugal", "3 days"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "Lisbon in 3 days — views & food",
+        description: "Hills, trams and ocean vibes.",
+        city: "Lisbon", country: "Portugal", continent: "Europe",
+        cover: lisbon, cover2: lisbon2, price: 11.99, duration: 3, period: "summer",
+        badge: "best_value", spots: 29, level: "medium", vibes: ["food", "relax"],
+        position: { lat: 38.7223, lng: -9.1393 },
+        previewSpots: [
+            { id: "1", title: "Alfama", position: { lat: 38.7110, lng: -9.1300 }, type: "activity" },
+            { id: "2", title: "Viewpoint", position: { lat: 38.7150, lng: -9.1350 }, type: "photo" },
+            { id: "3", title: "Pastel de nata", position: { lat: 38.7130, lng: -9.1400 }, type: "food" }
+        ]
     },
 
     {
         id: "newyork-5-days",
-        title: "New York in 5 days — the real NYC experience",
-        city: "New York",
-        country: "USA",
-        continent: "Americas",
-        cover: newyork,
-        price: 19.99,
-        currency: "USD",
-        duration: 5,
-        period: ["spring", "summer", "autumn"],
-        shortDescription: "Experience NYC beyond the tourist spots.",
-        description:
-            "From Manhattan to Brooklyn, discover the real New York with a perfectly optimized itinerary.",
-        highlights: ["Skyline views", "Brooklyn", "Food spots"],
-        includes: ["Google Maps plan"],
-        tags: ["new york", "usa", "5 days", "city"],
-        badges: ["trending", "best_value"],
-        spots: 32,
-        level: "medium",
-        vibe: ["food", "culture"]
+        title: "New York in 5 days — real NYC",
+        description: "Manhattan, Brooklyn and local spots.",
+        city: "New York", country: "USA", continent: "Americas",
+        cover: newyork, cover2: newyork2, price: 19.99, duration: 5, period: "autumn",
+        badge: "trending", spots: 40, level: "intense", vibes: ["food", "nightlife", "culture"],
+        position: { lat: 40.7128, lng: -74.0060 },
+        previewSpots: [
+            { id: "1", title: "Times Square", position: { lat: 40.7580, lng: -73.9855 }, type: "photo" },
+            { id: "2", title: "Brooklyn Bridge", position: { lat: 40.7061, lng: -73.9969 }, type: "activity" },
+            { id: "3", title: "Williamsburg food", position: { lat: 40.7081, lng: -73.9571 }, type: "food" }
+        ]
     }
-
 ];
