@@ -29,8 +29,28 @@ import lisbon2 from "../assets/itineraries/lisbon_card_2.jpg";
 import newyork from "../assets/itineraries/newyork_card.jpg";
 import newyork2 from "../assets/itineraries/newyork_card_2.jpg";
 
+type ItineraryType = {
+    id: string,
+    title: string,
+    description: string,
+    city: string,
+    country: string,
+    continent: string,
+    cover: string, // DA CAMBIARE
+    cover2: string, // DA CAMBIARE
+    images?: string[],
+    price: number,
+    duration: number,
+    period: string,
+    badge: string,
+    spots: number,
+    level: string,
+    vibes: string[],
+    position: { lat: number, lng: number },
+    previewSpots: { id: string, title: string, position: { lat: number, lng: number }, type: string }[],
+}
 
-export const itineraries = [
+export const itineraries: ItineraryType[] = [
     {
         id: "rome-3-days",
         title: "Rome in 3 days — history, food & hidden corners",

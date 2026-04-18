@@ -2,20 +2,19 @@ import { useEffect, useMemo, useState } from "react";
 import { useAppContext } from "@/context/AppContext";
 import { useNavigate } from "react-router-dom";
 import useIsMobile from "@/lib/screenWidth";
-import { ChevronLeft, Earth, Share2 } from "lucide-react";
+import { ChevronLeft, Earth } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import GlobeMap from "@/components/globe/GlobeMap";
 import StatusDialog from "@/components/globe/StatusDialog";
 import StatusDialogMobile from "@/components/globe/StatusDialogMobile";
 import AnalyticsDialog from "@/components/globe/AnalyticsDialog";
 import AnalyticsDialogMobile from "@/components/globe/AnalyticsDialogMobile";
-import ShareDialog from "@/components/globe/ShareDialog";
 
 export default function Globe() {
     const navigate = useNavigate();
     const isMobile = useIsMobile();
 
-    const { setAnalyticsDialogOpen, setShareDialogOpen } = useAppContext();
+    const { setAnalyticsDialogOpen } = useAppContext();
 
     // State for selected country in the dialog
     const [selectedCountry, setSelectedCountry] = useState<{ name: string; code: string }>({

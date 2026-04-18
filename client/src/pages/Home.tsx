@@ -23,7 +23,10 @@ export default function Home() {
             <Faqs />
             <Footer />
             {/* Dialogs */}
-            {isMobile ? <PreviewCardMobile /> : <PreviewCard />}
+            {isMobile
+                ? <PreviewCardMobile />
+                : <PreviewCard />
+            }
             <CollaborationDialog />
         </div>
     )

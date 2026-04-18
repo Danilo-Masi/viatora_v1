@@ -14,7 +14,7 @@ interface StatusDialogProps {
 
 export default function StatusDialog({ selectedCountry, setCountriesState, countriesState }: StatusDialogProps) {
     const navigate = useNavigate();
-    const {isStateDialogOpen, setStateDialogOpen} = useAppContext();
+    const { isStateDialogOpen, setStateDialogOpen } = useAppContext();
     const isVisited = countriesState[selectedCountry.code] === "visited";
     const isWishlist = countriesState[selectedCountry.code] === "wishlist";
 
@@ -28,6 +28,10 @@ export default function StatusDialog({ selectedCountry, setCountriesState, count
             };
         });
         setStateDialogOpen(false);
+    }
+
+    const handleExpolore = () => {
+        navigate("/");
     }
 
     return (
@@ -79,7 +83,7 @@ export default function StatusDialog({ selectedCountry, setCountriesState, count
 
                     {/* CTA */}
                     <Button
-                        onClick={() => navigate(`/?country=${selectedCountry.code}`)}
+                        onClick={handleExpolore}
                         className="w-full gap-2 py-6 rounded-xl bg-zinc-900 text-white font-semibold transition-all">
                         <Compass className="w-5 h-5" />
                         Explore {selectedCountry.name} <ReactCountryFlag countryCode={selectedCountry.code} />

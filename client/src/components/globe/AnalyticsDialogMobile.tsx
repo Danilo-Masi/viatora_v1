@@ -1,93 +1,20 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Drawer, DrawerContent } from "../ui/drawer";
 import { Separator } from "../ui/separator";
 import DataVisualization from "./DataVisualization";
 import ToggleButtons from "./ToggleButtons";
-import countries from "world-countries";
 import ReactCountryFlag from "react-country-flag";
 import { CountryName } from "react-countryname-flag";
 import { useAppContext } from "@/context/AppContext";
+import { useAnalytics } from "@/lib/useAnalytics";
 
-interface AnalyticsDialogMobileProps {
-  countriesState: { [key: string]: string };
-}
+export default function AnalyticsDialogMobile({ countriesState }: { countriesState: Record<string, string> }) {
 
-const VALID_REGIONS = ["Europe", "Asia", "Africa", "Oceania", "Americas"];
-
-// Mapping country --> continent
-const countryToContinent = Object.fromEntries(
-  countries.map(c => [c.cca2, c.region])
-);
-
-// Total countries per continent
-const totalByContinent: Record<string, number> = {};
-countries.forEach((c) => {
-  if (!VALID_REGIONS.includes(c.region)) return;
-
-  if (!totalByContinent[c.region]) {
-    totalByContinent[c.region] = 0;
-  }
-  totalByContinent[c.region]++;
-});
-
-export default function AnalyticsDialogMobile({ countriesState }: AnalyticsDialogMobileProps) {
-  const { isAnalyticsDialogOpen, setAnalyticsDialogOpen } = useAppContext();
   const [selectedType, setSelectedType] = useState<"visited" | "wishlist">("visited");
+  const { isAnalyticsDialogOpen, setAnalyticsDialogOpen } = useAppContext();
+  const { grouped, selectedCount, percentage, worldRegionsVisited, continentsData } = useAnalytics(countriesState, selectedType);
 
-  // Grouped countries
-  const grouped = useMemo(() => {
-    const grouped: Record<string, string[]> = {};
-
-    Object.entries(countriesState).forEach(([code, status]) => {
-      if (status !== selectedType) return;
-
-      const continent = countryToContinent[code];
-      if (!continent || !VALID_REGIONS.includes(continent)) return;
-
-      if (!grouped[continent]) grouped[continent] = [];
-      grouped[continent].push(code);
-    });
-
-    // ordine stabile
-    return Object.fromEntries(
-      VALID_REGIONS
-        .filter(region => grouped[region])
-        .map(region => [region, grouped[region]])
-    );
-
-  }, [countriesState, selectedType]);
-
-  // Visited country count
-  const visitedCount = useMemo(
-    () => Object.values(countriesState).filter(v => v === "visited").length,
-    [countriesState]
-  );
-
-  // Percentage of world visited
-  const percentage = Math.round((visitedCount / 195) * 100);
-
-  // World regions visited
-  const worldRegions = useMemo(
-    () => Object.keys(grouped).length,
-    [grouped]
-  );
-
-  // Visited by continent
-  const visitedByContinent = useMemo(() => {
-    const result: Record<string, number> = {};
-
-    Object.entries(countriesState).forEach(([code, status]) => {
-      if (status !== "visited") return;
-
-      const continent = countryToContinent[code];
-      if (!continent || !VALID_REGIONS.includes(continent)) return;
-
-      if (!result[continent]) result[continent] = 0;
-      result[continent]++;
-    });
-
-    return result;
-  }, [countriesState]);
+  const colorBar = selectedType === "visited" ? "bg-amber-400" : "bg-blue-400";
 
   return (
     <Drawer open={isAnalyticsDialogOpen} onOpenChange={setAnalyticsDialogOpen}>
@@ -95,36 +22,42 @@ export default function AnalyticsDialogMobile({ countriesState }: AnalyticsDialo
 
         {/* HEADER STATS */}
         <section className="flex justify-between items-center">
-          <DataVisualization data={`${visitedCount}/195`} info="countries" />
+          <DataVisualization
+            data={`${selectedCount}/195`}
+            info="countries" />
           <Separator orientation="vertical" className="h-6" />
-          <DataVisualization data={`${percentage}%`} info="of the world" />
+          <DataVisualization
+            data={`${percentage}%`}
+            info="of the world" />
           <Separator orientation="vertical" className="h-6" />
-          <DataVisualization data={`${worldRegions}/5`} info="world regions" />
+          <DataVisualization
+            data={`${worldRegionsVisited}/5`}
+            info="regions" />
         </section>
 
         {/* TOGGLE */}
-        <section className="flex justify-center">
+        <section className="w-full flex justify-center">
           <ToggleButtons value={selectedType} onChange={setSelectedType} />
         </section>
 
         {/* LIST */}
-        <section className="flex flex-col gap-5 max-h-[55svh] overflow-y-auto pr-1">
-
+        <section className="flex flex-col gap-8 max-h-[50svh] overflow-y-auto pb-3 no-scrollbar">
+          {/* Empty list */}
           {Object.keys(grouped).length === 0 && (
             <p className="text-center text-sm text-zinc-400 py-10">
-              No countries yet
+              No {selectedType} countries yet
             </p>
           )}
+          {/* List divided by continent */}
+          {continentsData.map(({ continent, visited, total }) => {
+            const codes = grouped[continent];
+            if (!codes) return null;
 
-          {Object.entries(grouped).map(([continent, codes]) => {
-            const visited = visitedByContinent[continent] || 0;
-            const total = totalByContinent[continent] || 0;
             const progress = total ? (visited / total) * 100 : 0;
 
             return (
-              <div key={continent} className="flex flex-col gap-3">
-
-                {/* HEADER CONTINENTE */}
+              <div key={continent} className="flex flex-col gap-5">
+                {/* Header continent */}
                 <div className="flex flex-col gap-1">
                   <div className="flex justify-between items-center">
                     <h2 className="text-sm font-semibold text-zinc-800">
@@ -134,17 +67,15 @@ export default function AnalyticsDialogMobile({ countriesState }: AnalyticsDialo
                       {visited}/{total}
                     </span>
                   </div>
-
-                  {/* PROGRESS BAR */}
+                  {/* Progress bar */}
                   <div className="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-amber-400 transition-all"
+                      className={`h-full transition-all ${colorBar}`}
                       style={{ width: `${progress}%` }}
                     />
                   </div>
                 </div>
-
-                {/* COUNTRIES */}
+                {/* Countries */}
                 <div className="flex flex-wrap gap-2">
                   {codes.map((code) => (
                     <div
@@ -155,10 +86,10 @@ export default function AnalyticsDialogMobile({ countriesState }: AnalyticsDialo
                     </div>
                   ))}
                 </div>
-
               </div>
             );
           })}
+
         </section>
 
       </DrawerContent>
