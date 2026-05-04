@@ -4,6 +4,8 @@ const getProduct = (id) => {
     switch (id) {
         case "newyork-7-days":
             return process.env.NEW_YORK_TEST_KEY;
+        case "amsterdam-3-days":
+            return process.env.AMSTERDAM_TEST_KEY;
         default:
             return null;
     }

@@ -1,51 +1,108 @@
+import { useNavigate } from "react-router-dom";
+import { CheckCircle, Info, Mail, ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+
 export default function Success() {
+    const navigate = useNavigate();
+
     return (
-        <div className="w-full min-h-svh flex items-center justify-center bg-gray-50">
-            <div className="w-[95%] md:w-[60%] flex flex-col gap-6 p-6 bg-white rounded-2xl shadow-lg">
+        <div className="w-full min-h-screen flex items-center justify-center bg-zinc-100 px-4 py-10">
+            <div className="w-full max-w-md flex flex-col items-center gap-6">
 
-                <h1 className="text-2xl font-bold text-center">
-                    Your itinerary is ready 🎉
-                </h1>
+                {/* LOGO */}
+                <h1 className="text-2xl font-bold text-zinc-900">Mapswapp</h1>
 
-                <div className="flex flex-col gap-4">
+                {/* SUCCESS STATE */}
+                <div className="w-full flex flex-col items-center text-center gap-3 bg-white rounded-xl p-6 shadow">
+                    <CheckCircle className="text-green-500 w-10 h-10" />
+                    <h2 className="text-xl font-semibold text-zinc-900">
+                        Payment successful
+                    </h2>
+                    <p className="text-sm text-zinc-500">
+                        Your itinerary has been sent to your email
+                    </p>
+                </div>
+
+                {/* EMAIL INFO */}
+                <div className="w-full flex gap-3 bg-white rounded-xl p-5 shadow">
+                    <Mail className="w-4 h-4 mt-1 text-blue-500" />
+                    <p className="w-[calc(100%-28px)] text-sm text-zinc-600 leading-relaxed">
+                        Check your inbox and open the email from Mapswapp.
+                        Inside you’ll find your itinerary ready to use.
+                    </p>
+                </div>
+
+                {/* STEP BY STEP */}
+                <div className="w-full flex flex-col gap-4">
+
+                    <h3 className="text-sm font-semibold text-zinc-800">
+                        How to use your itinerary
+                    </h3>
 
                     {/* STEP 1 */}
-                    <div className="p-4 rounded-xl bg-gray-100">
-                        <h2 className="font-semibold">1. Where you’ll receive it</h2>
-                        <p className="text-sm text-gray-600">
-                            You will receive your itinerary link via email (or directly on the confirmation page).
-                        </p>
+                    <div className="flex gap-3 bg-white rounded-xl p-5 shadow">
+                        <div className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white text-sm font-semibold">
+                            1
+                        </div>
+                        <div className="w-[calc(100%-44px)] flex flex-col gap-1 text-sm text-clip text-zinc-600">
+                            <p className="font-medium text-zinc-900">
+                                Open the link in your email
+                            </p>
+                            <p>
+                                Tap the link to open the itinerary.
+                            </p>
+                        </div>
                     </div>
 
                     {/* STEP 2 */}
-                    <div className="p-4 rounded-xl bg-gray-100">
-                        <h2 className="font-semibold">2. How to open it</h2>
-                        <p className="text-sm text-gray-600">
-                            Click the link to open your interactive itinerary in your browser. No app required.
-                        </p>
+                    <div className="flex gap-3 bg-white rounded-xl p-5 shadow">
+                        <div className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white text-sm font-semibold">
+                            2
+                        </div>
+                        <div className="w-[calc(100%-44px)] flex flex-col gap-1 text-sm text-clip text-zinc-600">
+                            <p className="font-medium text-zinc-900">
+                                Open it in Google Maps
+                            </p>
+                            <p>
+                                The itinerary will open via Google My Maps. From there, open it in Google Maps to navigate easily.
+                            </p>
+                        </div>
                     </div>
 
                     {/* STEP 3 */}
-                    <div className="p-4 rounded-xl bg-gray-100">
-                        <h2 className="font-semibold">3. How to use it</h2>
-                        <p className="text-sm text-gray-600">
-                            Explore your route, saved places, and suggestions. You can zoom, click pins, and follow the day-by-day plan.
-                        </p>
-                    </div>
-
-                    {/* STEP 4 */}
-                    <div className="p-4 rounded-xl bg-gray-100">
-                        <h2 className="font-semibold">4. If something doesn’t work</h2>
-                        <p className="text-sm text-gray-600">
-                            Try refreshing the page or opening the link in another browser. If the issue persists, contact support.
-                        </p>
+                    <div className="flex gap-3 bg-white rounded-xl p-5 shadow">
+                        <div className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white text-sm font-semibold">
+                            3
+                        </div>
+                        <div className="w-[calc(100%-44px)] flex flex-col gap-1 text-sm text-clip text-zinc-600">
+                            <p className="font-medium text-zinc-900">
+                                Save it for your trip
+                            </p>
+                            <p>
+                                Save the map so you can access it anytime during your trip.
+                            </p>
+                        </div>
                     </div>
 
                 </div>
 
-                <button className="mt-4 w-full py-3 rounded-xl bg-black text-white font-medium hover:opacity-90 transition">
-                    Go to my itinerary
-                </button>
+                {/* TROUBLESHOOT */}
+                <div className="w-full flex gap-3 bg-zinc-200 rounded-xl p-5">
+                    <Info className="w-4 h-4 mt-1 text-black" />
+                    <p className="w-[calc(100%-28px)] text-sm text-zinc-700 leading-relaxed">
+                        Didn’t receive the email? Check your spam folder.
+                        If you’re on iPhone, make sure you open the link using Google Maps for the best experience.
+                        Still having issues? Contact us at <span><a href="mailto:support@mapswapp.com" className="hover:underline">support@mapswapp.com</a></span>
+                    </p>
+                </div>
+
+                {/* CTA */}
+                <Button
+                    onClick={() => navigate("/", { replace: true })}
+                    className="w-full py-6 text-base font-medium rounded-xl hover:scale-95 transition-all duration-400">
+                    <ChevronLeft /> Explore more itineraries
+                </Button>
 
             </div>
         </div>
