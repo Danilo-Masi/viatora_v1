@@ -20,8 +20,8 @@ type ItineraryType = {
     city: string,
     country: string,
     continent: string,
-    cover: string, // DA CAMBIARE
-    cover2: string, // DA CAMBIARE
+    cover: string, // TO UPDATE
+    cover2: string, // TO UPDATE
     images?: string[],
     price: number,
     duration: number,
@@ -35,17 +35,17 @@ type ItineraryType = {
 export const itineraries: ItineraryType[] = [
     // PORTUGAL //
     {
-        id: "lisbon-3-days",
-        title: "Lisbon in 3 days — views & food",
-        description: "Hills, trams and ocean vibes.",
+        id: "lisbon_by_mapswapp",
+        title: "Lisbon, beyond the obvious",
+        description: "Get lost in the hills, catch the right viewpoints at the right time, and move through Lisbon like someone who’s already been there.",
         city: "Lisbon",
         country: "Portugal",
         continent: "Europe",
-        cover: lisbon,
-        cover2: lisbon2,
+        cover: lisbon, // TO UPDATE
+        cover2: lisbon2, // TO UPDATE
         price: 9.99,
         duration: 3,
-        period: "summer",
+        period: "spring",
         badge: "best_value",
         spots: 21,
         position: { lat: 38.7223, lng: -9.1393 },
@@ -58,14 +58,14 @@ export const itineraries: ItineraryType[] = [
     },
     // UNITED KINGDOM //
     {
-        id: "london-4-days",
-        title: "London in 4 days — iconic & local",
-        description: "Landmarks + hidden areas.",
+        id: "london_by_mapswapp",
+        title: "London, without the chaos",
+        description: "Move through the city with a clear plan, hit the icons at the right time, and slip into the neighborhoods most people never reach.",
         city: "London",
         country: "United Kingdom",
         continent: "Europe",
-        cover: london,
-        cover2: london2,
+        cover: london, // TO UPDATE
+        cover2: london2, // TO UPDATE
         price: 18.99,
         duration: 4,
         period: "autumn",
@@ -81,16 +81,16 @@ export const itineraries: ItineraryType[] = [
     },
     // FRANCE //
     {
-        id: "paris-3-days",
-        title: "Paris in 3 days — romance & food",
-        description: "The perfect Paris experience.",
+        id: "paris_by_mapswapp",
+        title: "Paris in 4 days — romance & food", // TO UPDATE
+        description: "The perfect Paris experience.", // TO UPDATE
         city: "Paris",
         country: "France",
         continent: "Europe",
-        cover: paris,
-        cover2: paris2,
+        cover: paris, // TO UPDATE
+        cover2: paris2, // TO UPDATE
         price: 18.99,
-        duration: 3,
+        duration: 4,
         period: "spring",
         badge: "trending",
         spots: 40,
@@ -102,92 +102,93 @@ export const itineraries: ItineraryType[] = [
             { id: "4", title: "Café de Flore", position: { lat: 48.85415, lng: 2.3326 }, type: "food", adress: "172 Bd Saint-Germain, 75006 Paris, France" }
         ]
     },
+    // HUNGARY //
+    {
+        id: "budapest_by_mapswapp",
+        title: "Budapest in 3 days — spas & nightlife", // TO UPDATE
+        description: "Relax, explore and party.", // TO UPDATE
+        city: "Budapest",
+        country: "Hungary",
+        continent: "Europe",
+        cover: budapest, // TO UPDATE
+        cover2: budapest2, // TO UPDATE
+        price: 14.99,
+        duration: 3,
+        period: "autumn",
+        badge: "best_value",
+        spots: 33,
+        position: { lat: 47.4979, lng: 19.0402 },
+        previewSpots: [
+            { id: "1", title: "Buda Castle", position: { lat: 47.4962, lng: 19.03956 }, type: "activity", adress: "Budapest, Szent György tér, 1014 Hungary" },
+            { id: "2", title: "Fisherman’s Bastion", position: { lat: 47.50218, lng: 19.03478 }, type: "activity", adress: "Budapest, 1014 Hungary" },
+            { id: "3", title: "Matthias Church", position: { lat: 47.50195, lng: 19.03416 }, type: "activity", adress: "Budapest, Szentháromság tér 2, 1014 Hungary" },
+            { id: "4", title: "Ruszwurm Confectionery", position: { lat: 47.50122, lng: 19.033 }, type: "food", adress: "Budapest, Szentháromság u. 7, 1014 Hungary" }
+        ]
+    },
     // ITALY //
     {
-        id: "rome-3-days",
-        title: "Rome in 3 days — history, food & hidden corners",
-        description: "Walk through history, eat like a local and discover secret Rome.",
+        id: "rome-4-days", // TO UPDATE
+        title: "Rome in 4 days — history, food & hidden corners", // TO UPDATE
+        description: "Walk through history, eat like a local and discover secret Rome.", // TO UPDATE
         city: "Rome",
         country: "Italy",
         continent: "Europe",
-        cover: rome,
-        cover2: rome2,
-        price: 14.99,
-        duration: 3,
-        period: "spring",
-        badge: "best_value",
-        spots: 32,
+        cover: rome, // TO UPDATE
+        cover2: rome2, // TO UPDATE
+        price: 14.99, // TO UPDATE
+        duration: 4,
+        period: "spring", // TO UPDATE
+        badge: "new",
+        spots: 32, // TO UPDATE
         position: { lat: 41.9028, lng: 12.4964 },
         previewSpots: [
-            { id: "1", title: "Colosseum", position: { lat: 41.8902, lng: 12.4922 }, type: "activity" },
-            { id: "2", title: "Trevi Fountain", position: { lat: 41.9009, lng: 12.4833 }, type: "photo" },
-            { id: "3", title: "Trastevere dinner", position: { lat: 41.8897, lng: 12.4708 }, type: "food" }
+            { id: "1", title: "Colosseum", position: { lat: 41.8902, lng: 12.4922 }, type: "activity" }, // TO UPDATE
+            { id: "2", title: "Trevi Fountain", position: { lat: 41.9009, lng: 12.4833 }, type: "photo" }, // TO UPDATE
+            { id: "3", title: "Trastevere dinner", position: { lat: 41.8897, lng: 12.4708 }, type: "food" } // TO UPDATE
         ]
     },
     // NETHERLANDS //
     {
-        id: "amsterdam-3-days",
-        title: "Amsterdam in 3 days — canals & bikes",
-        description: "Explore beyond clichés with cafés and hidden areas.",
+        id: "amsterdam-3-days", // TO UPDATE
+        title: "Amsterdam in 3 days — canals & bikes", // TO UPDATE
+        description: "Explore beyond clichés with cafés and hidden areas.", // TO UPDATE
         city: "Amsterdam",
         country: "Netherlands",
         continent: "Europe",
-        cover: amsterdam,
-        cover2: amsterdam2,
-        price: 9.99,
+        cover: amsterdam, // TO UPDATE
+        cover2: amsterdam2, // TO UPDATE
+        price: 9.99, // TO UPDATE
         duration: 3,
-        period: "summer",
-        badge: "trending",
-        spots: 30,
+        period: "summer", // TO UPDATE
+        badge: "best_value",
+        spots: 30, // TO UPDATE
         position: { lat: 52.3676, lng: 4.9041 },
         previewSpots: [
-            { id: "1", title: "Canals", position: { lat: 52.3731, lng: 4.8922 }, type: "activity" },
-            { id: "2", title: "Jordaan", position: { lat: 52.3752, lng: 4.8830 }, type: "photo" },
-            { id: "3", title: "Coffee shop", position: { lat: 52.3700, lng: 4.8900 }, type: "food" }
-        ]
-    },
-    // HUNGARY //
-    {
-        id: "budapest-3-days",
-        title: "Budapest in 3 days — spas & nightlife",
-        description: "Relax, explore and party.",
-        city: "Budapest",
-        country: "Hungary",
-        continent: "Europe",
-        cover: budapest,
-        cover2: budapest2,
-        price: 10.99,
-        duration: 3,
-        period: "spring",
-        badge: "trending",
-        spots: 30,
-        position: { lat: 47.4979, lng: 19.0402 },
-        previewSpots: [
-            { id: "1", title: "Thermal baths", position: { lat: 47.5186, lng: 19.0810 }, type: "activity" },
-            { id: "2", title: "Parliament", position: { lat: 47.5070, lng: 19.0450 }, type: "photo" },
-            { id: "3", title: "Ruin bar", position: { lat: 47.4970, lng: 19.0630 }, type: "bar" }
+            { id: "1", title: "Canals", position: { lat: 52.3731, lng: 4.8922 }, type: "activity" }, // TO UPDATE
+            { id: "2", title: "Jordaan", position: { lat: 52.3752, lng: 4.8830 }, type: "photo" }, // TO UPDATE
+            { id: "3", title: "Coffee shop", position: { lat: 52.3700, lng: 4.8900 }, type: "food" } // TO UPDATE
         ]
     },
     // USA //
     {
-        id: "newyork-7-days",
-        title: "New York for the first time",
-        description: "Manhattan, Brooklyn and local spots.",
+        id: "newyork-7-days", // TO UPDATE
+        title: "New York for the first time", // TO UPDATE
+        description: "Manhattan, Brooklyn and local spots.", // TO UPDATE
         city: "New York",
         country: "USA",
         continent: "Americas",
-        cover: newyork,
-        cover2: newyork2,
-        price: 25.99,
-        duration: 5,
-        period: "autumn",
+        cover: newyork, // TO UPDATE
+        cover2: newyork2, // TO UPDATE
+        price: 25.99, // TO UPDATE
+        duration: 7, // TO UPDATE 
+        period: "autumn", // TO UPDATE
         badge: "trending",
-        spots: 59,
+        spots: 59, // TO UPDATE
         position: { lat: 40.7128, lng: -74.0060 },
         previewSpots: [
-            { id: "1", title: "Metropolitan Museum of Art", position: { lat: 40.77943, lng: -73.96324 }, type: "activity" },
-            { id: "2", title: "Central Park", position: { lat: 40.78255, lng: -73.96558 }, type: "activity" },
-            { id: "3", title: "Bow Bridge", position: { lat: 40.77575, lng: -73.97177 }, type: "photo" }
+            { id: "1", title: "Metropolitan Museum of Art", position: { lat: 40.77943, lng: -73.96324 }, type: "activity" }, // TO UPDATE
+            { id: "2", title: "Central Park", position: { lat: 40.78255, lng: -73.96558 }, type: "activity" }, // TO UPDATE
+            { id: "3", title: "Bow Bridge", position: { lat: 40.77575, lng: -73.97177 }, type: "photo" } // TO UPDATE
         ]
     }
 ];
