@@ -2,12 +2,18 @@ import { creem } from "../../config/creem.mjs";
 
 const getProduct = (id) => {
     switch (id) {
-        case "lisbon-3-days":
+        case "lisbon_by_mapswapp":
             return process.env.LISBON_KEY;
-        case "london-4-days":
+        case "london_by_mapswapp":
             return process.env.LONDON_KEY;
-        case "paris-4-days":
+        case "paris_by_mapswapp":
             return process.env.PARIS_KEY;
+        case "budapest_by_mapswapp":
+            return process.env.BUDAPEST_KEY;
+        case "rome_by_mapswapp":
+            return process.env.ROME_KEY;
+        case "amsterdam_by_mapswapp":
+            return process.env.AMSTERDAM_KEY;
         default:
             return null;
     }

@@ -82,8 +82,8 @@ export const itineraries: ItineraryType[] = [
     // FRANCE //
     {
         id: "paris_by_mapswapp",
-        title: "Paris in 4 days — romance & food", // TO UPDATE
-        description: "The perfect Paris experience.", // TO UPDATE
+        title: "Paris is better when you wander",
+        description: "A slower, better-paced way to experience Paris, mixing iconic places with quiet corners most visitors walk straight past.",
         city: "Paris",
         country: "France",
         continent: "Europe",
@@ -105,8 +105,8 @@ export const itineraries: ItineraryType[] = [
     // HUNGARY //
     {
         id: "budapest_by_mapswapp",
-        title: "Budapest in 3 days — spas & nightlife", // TO UPDATE
-        description: "Relax, explore and party.", // TO UPDATE
+        title: "Budapest, slow mornings and late nights",
+        description: "A balanced route through the city’s baths, viewpoints, ruin bars, and local corners that make Budapest feel alive after sunset.",
         city: "Budapest",
         country: "Hungary",
         continent: "Europe",
@@ -127,53 +127,55 @@ export const itineraries: ItineraryType[] = [
     },
     // ITALY //
     {
-        id: "rome-4-days", // TO UPDATE
-        title: "Rome in 4 days — history, food & hidden corners", // TO UPDATE
-        description: "Walk through history, eat like a local and discover secret Rome.", // TO UPDATE
+        id: "rome_by_mapswapp",
+        title: "Rome never really feels finished",
+        description: "Ancient landmarks, quiet backstreets, sunset viewpoints, and the kind of places that make you slow down without realizing it.",
         city: "Rome",
         country: "Italy",
         continent: "Europe",
         cover: rome, // TO UPDATE
         cover2: rome2, // TO UPDATE
-        price: 14.99, // TO UPDATE
+        price: 19.99,
         duration: 4,
-        period: "spring", // TO UPDATE
-        badge: "new",
-        spots: 32, // TO UPDATE
+        period: "spring",
+        badge: "trending",
+        spots: 44,
         position: { lat: 41.9028, lng: 12.4964 },
         previewSpots: [
-            { id: "1", title: "Colosseum", position: { lat: 41.8902, lng: 12.4922 }, type: "activity" }, // TO UPDATE
-            { id: "2", title: "Trevi Fountain", position: { lat: 41.9009, lng: 12.4833 }, type: "photo" }, // TO UPDATE
-            { id: "3", title: "Trastevere dinner", position: { lat: 41.8897, lng: 12.4708 }, type: "food" } // TO UPDATE
+            { id: "1", title: "Colosseo", position: { lat: 41.89021, lng: 12.49223 }, type: "activity", adress: "P.za del Colosseo, 1, 00184 Rome" },
+            { id: "2", title: "Foro Romano", position: { lat: 41.89209, lng: 12.48643 }, type: "activity", adress: "00186 Rome" },
+            { id: "3", title: "Via dei Fori Imperiali walk", position: { lat: 41.89275, lng: 12.488 }, type: "activity", adress: "Via dei Fori Imperiali, Rome" },
+            { id: "4", title: "Ai Tre Scalini", position: { lat: 41.89628, lng: 12.49051 }, type: "food", adress: "Via Panisperna, 251, 00184 Rome" }
         ]
     },
     // NETHERLANDS //
     {
-        id: "amsterdam-3-days", // TO UPDATE
-        title: "Amsterdam in 3 days — canals & bikes", // TO UPDATE
-        description: "Explore beyond clichés with cafés and hidden areas.", // TO UPDATE
+        id: "amsterdam_by_mapswapp",
+        title: "Amsterdam, beyond the postcard",
+        description: "A well-paced route through the city’s canals, creative corners, and everyday spots that make Amsterdam feel lived-in, not touristy.",
         city: "Amsterdam",
         country: "Netherlands",
         continent: "Europe",
         cover: amsterdam, // TO UPDATE
         cover2: amsterdam2, // TO UPDATE
-        price: 9.99, // TO UPDATE
+        price: 14.99,
         duration: 3,
-        period: "summer", // TO UPDATE
+        period: "autumn",
         badge: "best_value",
-        spots: 30, // TO UPDATE
+        spots: 32,
         position: { lat: 52.3676, lng: 4.9041 },
         previewSpots: [
-            { id: "1", title: "Canals", position: { lat: 52.3731, lng: 4.8922 }, type: "activity" }, // TO UPDATE
-            { id: "2", title: "Jordaan", position: { lat: 52.3752, lng: 4.8830 }, type: "photo" }, // TO UPDATE
-            { id: "3", title: "Coffee shop", position: { lat: 52.3700, lng: 4.8900 }, type: "food" } // TO UPDATE
+            { id: "1", title: "Dam Square", position: { lat: 52.37307, lng: 4.89264 }, type: "activity", adress: "Dam, 1012 Amsterdam, Netherlands" },
+            { id: "2", title: "Begijnhof", position: { lat: 52.36962, lng: 4.89018 }, type: "activity", adress: "Begijnhof, 1012 Amsterdam, Netherlands" },
+            { id: "3", title: "De Negen Straatjes", position: { lat: 52.37038, lng: 4.88605 }, type: "activity", adress: "Negen Straatjes, 1016 Amsterdam, Netherlands" },
+            { id: "4", title: "Koffiespot", position: { lat: 52.3694, lng: 4.88059 }, type: "food", adress: "Elandsgracht 53, 1016 TN Amsterdam, Netherlands" }
         ]
     },
     // USA //
     {
-        id: "newyork-7-days", // TO UPDATE
-        title: "New York for the first time", // TO UPDATE
-        description: "Manhattan, Brooklyn and local spots.", // TO UPDATE
+        id: "newyork_by_mapswapp",
+        title: "New York never sleep",
+        description: "A clean flow through Manhattan and Brooklyn built to balance big landmarks, local energy, and moments where the city suddenly feels real.",
         city: "New York",
         country: "USA",
         continent: "Americas",

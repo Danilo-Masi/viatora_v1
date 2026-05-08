@@ -1,6 +1,5 @@
 export const categories = [
     { value: "trending", label: "Trending", emoji: "🔥" },
-    { value: "new", label: "New", emoji: "✨" },
     { value: "best_value", label: "Best value", emoji: "💎" },
 ];
 
